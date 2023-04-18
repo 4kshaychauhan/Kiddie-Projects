@@ -1,23 +1,62 @@
-import logo from './logo.svg';
+import React, {useRef} from 'react'
 import './App.css';
+import Image from './Image/div_back.jpg'
 
 function App() {
+
+
+  const panels = document.querySelectorAll('.panel')
+
+  panels.forEach(panel => {
+      panel.addEventListener('click', () => {
+          removeActiveClasses()
+          panel.classList.add('active')
+      })
+  })
+  
+  function removeActiveClasses() {
+      panels.forEach(panel => {
+          panel.classList.remove('active')
+      })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <div style={{ backgroundImage: `url(${Image})` }}></div>
+        <div className="container">
+          <div
+            className="panel active"
+            style={{backgroundImage: `url(${Image})`}}
+          >
+            <h3>Explore The World</h3>
+          </div>
+          <div
+            className="panel"
+            style={{backgroundImage: `url(${Image})`}}
+          >
+            <h3>Wild Forest</h3>
+          </div>
+          <div
+            className="panel"
+            style={{backgroundImage: `url(${Image})`}}
+          >
+            <h3>Sunny Beach</h3>
+          </div>
+          <div
+            className="panel"
+            style={{backgroundImage: `url(${Image})`}}
+          >
+            <h3>City on Winter</h3>
+          </div>
+          <div
+            className="panel"
+            style={{backgroundImage: `url(${Image})`}}
+          >
+            <h3>Mountains - Clouds</h3>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
